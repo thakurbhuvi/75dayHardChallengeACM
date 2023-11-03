@@ -1,0 +1,20 @@
+class Solution
+{
+public:
+vector<vector<int>> merge(vector<vector<int>>& intervals)
+{
+sort(intervals.begin(), intervals.end());
+vector<vector<int>> stack;
+stack.push_back(intervals[0]);
+for(int i=0; i<intervals.size(); i++)
+{
+if(stack.back()[1] >= intervals[i][0])
+{
+stack.back()[1] =
+max(stack.back()[1],intervals[i][1]);
+}
+else
+stack.push_back(intervals[i]);
+}
+return stack;
+}};
